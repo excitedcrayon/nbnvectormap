@@ -1,0 +1,68 @@
+$(function(){
+  var au_aites = [
+      {name: 'Geraldton', coords: [-28.77917, 114.61444], status: 'adsl'},
+      {name: 'Perth', coords: [-32.068483, 115.92359], status: 'adsl'},
+      {name: 'Darwin', coords: [-12.46282, 130.84177], status: 'adsl'},
+      {name: 'AliceSprings', coords: [-23.70021, 133.88061], status: 'adsl'},
+      {name: 'PortLincolnDepot', coords: [-34.751053, 135.844221], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'GeppsCross', coords: [-34.84483, 138.59507], status: 'adsl'},
+      {name: 'Adelaide', coords: [-34.92862, 138.59996], status: 'adsl'},
+      {name: 'Berri', coords: [-34.28524, 140.6023], status: 'adsl'},
+      {name: 'MtGambierDepot', coords: [-37.82652, 140.7768], status: 'adsl'},
+      {name: 'Warrnambool', coords: [-38.38, 142.48], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'},
+      {name: 'PortAugusta', coords: [-32.4705, 137.73896], status: 'adsl'}
+  ];
+
+  new jvm.Map({
+    container: $('#aus-map'),
+    map: 'au_mill',
+    regionStyle: {
+        initial: {
+            fill: '#eee'
+        }
+    },
+    backgroundColor: 'none',
+    normalizeFunction: 'polynomial',
+    markers: au_aites.map(function(h){ return {name: h.name, latLng: h.coords} }),
+    labels: {
+        markers: {
+          render: function(index){
+            //return au_aites[index].name;
+          },
+          offsets: function(index){
+            var offset = au_aites[index]['offsets'] || [0, 0];
+            return [offset[0] - 7, offset[1] + 3];
+          }
+        }
+    },
+    series: {
+      markers: [{
+        attribute: 'fill',
+        scale: {
+          'nbn': '#00FF00',
+          'adsl': '#00FFFF'
+        },
+        values: au_aites.reduce(function(p, c, i){ p[i] = c.status; return p }, {}),
+          /*
+        legend: {
+          horizontal: true,
+          title: 'Nuclear power station status',
+          labelRender: function(v){
+            return {
+              closed: 'Closed',
+              activeUntil2018: 'Scheduled for shut down<br> before 2018',
+              activeUntil2022: 'Scheduled for shut down<br> before 2022'
+            }[v];
+          }
+        }*/
+      }]
+    }
+  });
+});

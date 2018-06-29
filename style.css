@@ -1,0 +1,57 @@
+html,body{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+}
+
+#nz-map{
+    width: 100%;
+    height: 100%;
+}
+
+circle{
+    r: 7 !important;
+}
+
+.jvectormap-legend{
+    background-color: #a12a86 !important;
+    box-shadow: 0 2px 2px 0px rgba(0,0,0,0.5);
+}
+.jvectormap-legend-title{
+    text-transform: uppercase;
+    font-family: "Arial", sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 0.5%;
+}
+.jvectormap-legend-inner {
+  margin-bottom: 3px;
+}
+
+.jvectormap-legend-cnt-h .jvectormap-legend-tick {
+  width: auto;
+  margin-right: 10px;
+}
+.jvectormap-legend-tick-sample{
+  border-radius: 50%;
+  border: 2.5px solid #000;
+}
+.jvectormap-legend-cnt-h .jvectormap-legend-tick-text {
+  font-family: "Helvetica", sans-serif;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 13px;
+  margin-left: 5px;
+}
+
+.jvectormap-legend-cnt-h .jvectormap-legend-tick-sample {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
+}
